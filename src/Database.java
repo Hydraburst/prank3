@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -34,9 +33,20 @@ public class Database {
         return result;
     }
 
-    public List<Country> sort(Comparator<Country> comparator){
-        List<Country> result = new ArrayList<>(countries);                                                                  //method sortirovki vyvodit v novyi list
+    public List<Country> sort(Continents continent, Comparator<Country> comparator) {
+        List<Country> result = new ArrayList<>(this.filterByContinent(continent.toString()));                                                                  //method sortirovki vyvodit v novyi list
         result.sort(comparator);
+        return result;
+    }
+
+    public List<Country> filterByContinent(String continent) {
+        List<Country> result = new ArrayList<>();
+        for (Country country : this.countries) {
+            String c1 = country.getContinent().toString();
+            String c2 = continent;
+            if (c1.equals(c2))
+                result.add(country);
+        }
         return result;
     }
 

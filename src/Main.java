@@ -50,9 +50,10 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Choose a sort type: ");
-                    System.out.println("1)name sort ");
-                    System.out.println("2)square sort ");
-                    System.out.println("3)pop sort ");
+                    System.out.println("1) name sort ASC");
+                    System.out.println("2) name sort DESC");
+                    System.out.println("3)square sort ");
+                    System.out.println("4)pop sort ");
                     int sort = in.nextInt();
                     Comparator<Country> comp = null;
                     switch (sort) {
@@ -60,13 +61,19 @@ public class Main {
                             comp = new NameComparator();
                             break;
                         case 2:
-                            comp = new SquareComparator();
+                            comp = Country.byNameDESC;
                             break;
                         case 3:
+                            comp = new SquareComparator();
+                            break;
+                        case 4:
+                            comp = Country.bySquareASC;
+                            break;
+                        case 5:
                             comp = new PopulationComparator();
                             break;
                     }
-                    database.sort(comp).forEach(System.out::println);
+                    database.sort(Continents.EUROPE, comp).forEach(System.out::println);
                     break;
 
 
