@@ -101,6 +101,7 @@ public class Country{
         return Objects.hash(name, capital, continent, population, square, id);
     }
 
+    
     public static Comparator<Country> byNameASC = (c1, c2) -> c1.getName().compareTo(c2.getName());
     public static Comparator<Country> byNameDESC = (c1, c2) -> c2.getName().compareTo(c1.getName());
     public static Comparator<Country> bySquareASC = (c1, c2) -> (int) Math.ceil(c1.getSquare() - c2.getSquare());
